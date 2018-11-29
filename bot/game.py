@@ -53,7 +53,7 @@ class Edu(object):
         self.hidden = "Right. Now, type one word you remember from the passage."
         self.original = sess
 
-        sess2 = "*fr_FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr_FR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
+        sess2 = "*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr-FR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
 
 
 
