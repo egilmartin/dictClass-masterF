@@ -17,8 +17,8 @@ class Edu(object):
     # add SSML tabs to cut up speech or check if this is already being done using <p> tags (Tony?)
     # Expand game sequence to add scratchpad step
     def __init__(self):
-        intro = "en-GB*Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais vous lire un petit paragraphe.*fr-FR*Fermez les yeux."
-        #intro = "*en-GB*Welcome to Clozer.*en-GB*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
+        #intro = "*en-GB* Welcome to Clozer. You're going to hear a story. Close your eyes and listen."
+        intro = "*en-GB*Welcome to Clozer.*en-GB*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
         #client = MongoClient(host="mongodb://kyusong:ianlee1022@ds251362.mlab.com:51362/dictclass")
         # this sets up access to the mongodb database where stories are kept
         client = MongoClient(host="mongodb://emerg55:emerg55@ds113703.mlab.com:13703/dictstories")
@@ -33,12 +33,11 @@ class Edu(object):
         #self.token_words = tokenize.word_tokenize(sess["text"])
 
         # choose a story at random from database
-        sess = "Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure. Je pourrai en faire davantage plus tard si cela fera ton affaire."
+        sess = "Hi. I hate talking through this web speech thing. I never have a clue what my voice is going to sound like. I really hope you find it understandable. Anyway, I have nothing more to say."
         self.token_words = tokenize.word_tokenize(sess)
 
         # set up List, which will hold a _______ for each word and the punctuation
         List = []
-
 
         # iterate through words in self.token_words. If it's a word, add a ____ to list, if not, keep (e.g. punctuation)
         for w in self.token_words:
@@ -51,14 +50,11 @@ class Edu(object):
                 List.append(w)
 
         # set up a hidden version of utterance - this outputs alternate text to speech bubble while tts speaks sys_utter
-        self.hidden = "Bon. Maintenant, entrez un mot que vous rapellez du paragraphe."
+        self.hidden = "Right. Now, type one word you remember from the passage."
         self.original = sess
 
-        sess2 = "*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr-FR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
 
-
-
-        self.sys_utter = intro + "^w^"+ sess2 + "^w^*fr-FR*Bon.*fr-FR*Maintenant, entrez un mot que vous rapellez du paragraphe."
+        self.sys_utter = intro + "^w^"+ sess + "^w^*en-GB*Right.*en-GB*Now, type one word you remember from the passage."
         #self.sys_utter = intro + sess["text"] + " Right. Now, type one word from the story."
         self.extraDiv1 = "  ".join(List)
 
@@ -67,7 +63,7 @@ class Edu(object):
         # moves game on after intro
         # check user has only typed one word for guess, reprompt if not, else send to check answer
         if len(text.split(" ")) > 1:
-            self.set_utter("*fr-FR*Un mot seulement, s'il vous plait.")
+            self.set_utter("Please type one only word.")
         else:
             self.check_answer(text)
         return
@@ -81,29 +77,27 @@ class Edu(object):
         List = []
         is_answer = False
         is_end = True
-        self.set_utter(random.choice(["*fr-FR*Non, essayez un autre mot. ", "*fr-FR*Dommage, entrez un nouveau mot."]))
-        var wc= 1;
-
+        self.set_utter(random.choice(["*en-GB*Sorry, try again. ", "*en-GB*Not there, go again."]))
         for w in self.token_words:
             if re.match("^\w+$", w) and not w.lower() == word.lower() and not w.lower() in self.answered:
                 b=len(w)
                 myblank2='_'*b
                 List.append(myblank2)
                 is_end = False
+
             elif w.lower() == word.lower():
                 is_answer = True
-                self.set_utter(random.choice(["*fr-FR*Bon, Entrez un autre mot. ", "*fr-FR*Super, Encore!", "*fr-FR*Correcte, Encore!"]))
+                self.set_utter(random.choice(["*en-GB*Good! ", "*en-GB*Great! ", "*en-GB*Correct. ", "*en-GB*Nice one! "]))
                 List.append(w)
             else:
                 List.append(w)
-
         # set hidden display to new grid
         self.hidden = self.get_utt()[7:]
         self.answered.append(word.lower())
         self.extraDiv1 = "  ".join(List)
         # ask kyusong what this does
         if is_end:
-            self.set_utter("*fr-FR*Excellent, vous avez mit tous les mots! ")
+            self.set_utter("*en-GB*Excellent.*en-GB*You did it! ")
 
             #self.__init__()
         return is_answer

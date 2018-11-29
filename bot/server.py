@@ -7,7 +7,7 @@ import logging
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-from bot.game import Game
+from bot.gameold import Game
 from bot.utils import InvalidUsage
 
 
