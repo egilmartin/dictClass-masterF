@@ -17,8 +17,8 @@ class Edu(object):
     # add SSML tabs to cut up speech or check if this is already being done using <p> tags (Tony?)
     # Expand game sequence to add scratchpad step
     def __init__(self):
-        #intro = "*en-GB* Welcome to Clozer. You're going to hear a story. Close your eyes and listen."
-        intro = "*en-GB*Welcome to Clozer.*en-GB*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
+        intro = "en-GB*Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais vous lire un petit paragraphe.*fr-FR*Fermez les yeux.*fr-FR*Ecoutez bien."
+        #intro = "*en-GB*Welcome to Clozer.*en-GB*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
         #client = MongoClient(host="mongodb://kyusong:ianlee1022@ds251362.mlab.com:51362/dictclass")
         # this sets up access to the mongodb database where stories are kept
         client = MongoClient(host="mongodb://emerg55:emerg55@ds113703.mlab.com:13703/dictstories")
@@ -50,14 +50,14 @@ class Edu(object):
                 List.append(w)
 
         # set up a hidden version of utterance - this outputs alternate text to speech bubble while tts speaks sys_utter
-        self.hidden = "Right. Now, type one word you remember from the passage."
+        self.hidden = "Bon. Maintenant, entrez un mot que vous rapellez du paragraphe."
         self.original = sess
 
         sess2 = "*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr-dbvFR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
 
 
 
-        self.sys_utter = intro + "^w^"+ sess2 + "^w^*en-GB*Right.*en-GB*Now, type one word you remember from the passage."
+        self.sys_utter = intro + "^w^"+ sess2 + "^w^*fr-FR*Bon.**fr-FR**Maintenant, entrez un mot que vous rapellez du paragraphe."
         #self.sys_utter = intro + sess["text"] + " Right. Now, type one word from the story."
         self.extraDiv1 = "  ".join(List)
 
@@ -66,7 +66,7 @@ class Edu(object):
         # moves game on after intro
         # check user has only typed one word for guess, reprompt if not, else send to check answer
         if len(text.split(" ")) > 1:
-            self.set_utter("Please type one word only.")
+            self.set_utter("*fr-FR*Un mot seulement, s'il vous plait.")
         else:
             self.check_answer(text)
         return
@@ -80,7 +80,7 @@ class Edu(object):
         List = []
         is_answer = False
         is_end = True
-        self.set_utter(random.choice(["*en-GB*Sorry, try again. ", "*en-GB*Not there, go again."]))
+        self.set_utter(random.choice(["*fr-FR*Non, essayez un autre mot. ", "*fr-FR*Dommage, entrez un nouveau mot."]))
         var wc= 1;
 
         for w in self.token_words:
@@ -92,10 +92,10 @@ class Edu(object):
             elif w.lower() == word.lower():
                 is_answer = True
                 if wc==1:
-                    self.set_utter("*en-GB*Great!*en-GB*Go again. ")
+                    self.set_utter("*fr-FR*Formidable!*fr-FR*Essayez un autre mot. ")
 
                 else:
-                    self.set_utter(random.choice(["*en-GB*Good! ", "*en-GB*Great! ", "*en-GB*Correct. ", "*en-GB*Nice one! "]))
+                    self.set_utter(random.choice(["*fr-FR*Bon! ", "*fr-FR*Super! ", "*fr-FR*Correcte. "]))
                 List.append(w)
             else:
                 List.append(w)
@@ -105,7 +105,7 @@ class Edu(object):
         self.extraDiv1 = "  ".join(List)
         # ask kyusong what this does
         if is_end:
-            self.set_utter("*en-GB*Excellent.*en-GB*You did it! ")
+            self.set_utter("*fr-FR*Excellent.*fr-FR*Vous avez mit tous les mots! ")
 
             #self.__init__()
         return is_answer
