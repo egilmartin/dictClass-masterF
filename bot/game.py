@@ -53,11 +53,11 @@ class Edu(object):
                 List.append(w)
 
         # set up a hidden version of utterance - this outputs alternate text to speech bubble while tts speaks sys_utter
-        self.hidden = "Bon. Maintenant, marquez un mot que vous rapellez du texte."
+        self.hidden = "Bon. Maintenant, tappez un mot que vous rapellez du texte."
         self.original = sess
 
 
-        self.sys_utter = intro + "^w^"+ sess1 + "^w^*fr-FR*Bon.*fr-FR*Maintenant, marquez un mot que vous rapellez du texte."
+        self.sys_utter = intro + "^w^"+ sess1 + "^w^*fr-FR*Bon.*fr-FR*Maintenant, tappez un mot que vous rapellez du texte."
         #self.sys_utter = intro + sess["text"] + " Right. Now, type one word from the story."
         self.extraDiv1 = "  ".join(List)
 
