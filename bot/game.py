@@ -53,7 +53,7 @@ class Edu(object):
         self.hidden = "Right. Now, type one word you remember from the passage."
         self.original = sess
 
-        sess2 = "*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr-FR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
+        sess2 = "*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr-dbvFR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
 
 
 
@@ -66,7 +66,7 @@ class Edu(object):
         # moves game on after intro
         # check user has only typed one word for guess, reprompt if not, else send to check answer
         if len(text.split(" ")) > 1:
-            self.set_utter("Please type one only word.")
+            self.set_utter("Please type one word only.")
         else:
             self.check_answer(text)
         return
@@ -81,6 +81,8 @@ class Edu(object):
         is_answer = False
         is_end = True
         self.set_utter(random.choice(["*en-GB*Sorry, try again. ", "*en-GB*Not there, go again."]))
+        var wc= 1;
+
         for w in self.token_words:
             if re.match("^\w+$", w) and not w.lower() == word.lower() and not w.lower() in self.answered:
                 b=len(w)
@@ -89,7 +91,11 @@ class Edu(object):
                 is_end = False
             elif w.lower() == word.lower():
                 is_answer = True
-                self.set_utter(random.choice(["*en-GB*Good! ", "*en-GB*Great! ", "*en-GB*Correct. ", "*en-GB*Nice one! "]))
+                if wc==1:
+                    self.set_utter("*en-GB*Great!*en-GB*Go again. ")
+
+                else:
+                    self.set_utter(random.choice(["*en-GB*Good! ", "*en-GB*Great! ", "*en-GB*Correct. ", "*en-GB*Nice one! "]))
                 List.append(w)
             else:
                 List.append(w)
