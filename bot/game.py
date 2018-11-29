@@ -17,7 +17,7 @@ class Edu(object):
     # add SSML tabs to cut up speech or check if this is already being done using <p> tags (Tony?)
     # Expand game sequence to add scratchpad step
     def __init__(self):
-        intro = "en-GB*Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais vous lire un petit paragraphe.*fr-FR*Fermez les yeux.*fr-FR*Ecoutez bien."
+        intro = "en-GB*Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais vous lire un petit paragraphe.*fr-FR*Fermez les yeux."
         #intro = "*en-GB*Welcome to Clozer.*en-GB*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
         #client = MongoClient(host="mongodb://kyusong:ianlee1022@ds251362.mlab.com:51362/dictclass")
         # this sets up access to the mongodb database where stories are kept
@@ -99,6 +99,7 @@ class Edu(object):
                 List.append(w)
             else:
                 List.append(w)
+            wc+=1
         # set hidden display to new grid
         self.hidden = self.get_utt()[7:]
         self.answered.append(word.lower())
