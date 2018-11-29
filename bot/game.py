@@ -91,23 +91,18 @@ class Edu(object):
                 is_end = False
             elif w.lower() == word.lower():
                 is_answer = True
-                if wc==1:
-                    self.set_utter("*fr-FR*Formidable!*fr-FR*Essayez un autre mot. ")
-                    List.append(w)
-
-                else:
-                    self.set_utter(random.choice(["*fr-FR*Bon! ", "*fr-FR*Super! ", "*fr-FR*Correcte. "]))
+                self.set_utter(random.choice(["*fr-FR*Bon, Entrez un autre mot. ", "*fr-FR*Super, Encore!", "*fr-FR*Correcte, Encore!"]))
                 List.append(w)
             else:
                 List.append(w)
-            wc+=1
+
         # set hidden display to new grid
         self.hidden = self.get_utt()[7:]
         self.answered.append(word.lower())
         self.extraDiv1 = "  ".join(List)
         # ask kyusong what this does
         if is_end:
-            self.set_utter("*fr-FR*Excellent.*fr-FR*Vous avez mit tous les mots! ")
+            self.set_utter("*fr-FR*Excellent, vous avez mit tous les mots! ")
 
             #self.__init__()
         return is_answer
