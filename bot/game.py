@@ -17,7 +17,7 @@ class Edu(object):
     # add SSML tabs to cut up speech or check if this is already being done using <p> tags (Tony?)
     # Expand game sequence to add scratchpad step
     def __init__(self):
-        intro = "*en-GB* Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais lire un petit paragrphe.*fr-FR*Fermez less yeux et attendez-moi. You're going to hear a story."
+        intro = "*en-GB* Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais vous lire un petit paragrphe.*fr-FR*Fermez less yeux et attendez-moi bien."
         #intro = "*en-GB*Welcome to Clozer.*fr-FR*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
         #client = MongoClient(host="mongodb://kyusong:ianlee1022@ds251362.mlab.com:51362/dictclass")
         # this sets up access to the mongodb database where stories are kept
@@ -77,7 +77,7 @@ class Edu(object):
         List = []
         is_answer = False
         is_end = True
-        self.set_utter(random.choice(["*en-GB*Sorry, try again. ", "*en-GB*Not there, go again."]))
+        self.set_utter(random.choice(["*fr-FR*Dommage, donne-moi un autre. ", "*fr-FR*Non, encore."]))
         for w in self.token_words:
             if re.match("^\w+$", w) and not w.lower() == word.lower() and not w.lower() in self.answered:
                 b=len(w)
@@ -87,7 +87,7 @@ class Edu(object):
 
             elif w.lower() == word.lower():
                 is_answer = True
-                self.set_utter(random.choice(["*en-GB*Good! ", "*en-GB*Great! ", "*en-GB*Correct. ", "*en-GB*Nice one! "]))
+                self.set_utter(random.choice(["*fr-FR*Bon, entrez un autre mot! ", "*fr-FR*Formidable, encore! "]))
                 List.append(w)
             else:
                 List.append(w)
@@ -97,7 +97,7 @@ class Edu(object):
         self.extraDiv1 = "  ".join(List)
         # ask kyusong what this does
         if is_end:
-            self.set_utter("*en-GB*Excellent.*en-GB*You did it! ")
+            self.set_utter("*fr-FR*Excellente.*fr-FR*Vous avez mis tous les mots! ")
 
             #self.__init__()
         return is_answer
