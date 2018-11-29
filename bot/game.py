@@ -18,7 +18,7 @@ class Edu(object):
     # Expand game sequence to add scratchpad step
     def __init__(self):
         #intro = "*en-GB* Welcome to Clozer. You're going to hear a story. Close your eyes and listen."
-        intro = "*en-GB*Welcome to Clozer.*en-GB*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
+        intro = "*en-GB*Welcome to Clozer.*fr-FR*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
         #client = MongoClient(host="mongodb://kyusong:ianlee1022@ds251362.mlab.com:51362/dictclass")
         # this sets up access to the mongodb database where stories are kept
         client = MongoClient(host="mongodb://emerg55:emerg55@ds113703.mlab.com:13703/dictstories")
