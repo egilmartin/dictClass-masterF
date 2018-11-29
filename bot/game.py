@@ -38,7 +38,7 @@ class Edu(object):
 
         # set up List, which will hold a _______ for each word and the punctuation
         List = []
-        print(List)
+
 
         # iterate through words in self.token_words. If it's a word, add a ____ to list, if not, keep (e.g. punctuation)
         for w in self.token_words:
@@ -54,7 +54,7 @@ class Edu(object):
         self.hidden = "Bon. Maintenant, entrez un mot que vous rapellez du paragraphe."
         self.original = sess
 
-        sess2 = "*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr-dbvFR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
+        sess2 = "*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr-FR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
 
 
 
