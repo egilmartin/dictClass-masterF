@@ -93,6 +93,7 @@ class Edu(object):
                 is_answer = True
                 if wc==1:
                     self.set_utter("*fr-FR*Formidable!*fr-FR*Essayez un autre mot. ")
+                    List.append(w)
 
                 else:
                     self.set_utter(random.choice(["*fr-FR*Bon! ", "*fr-FR*Super! ", "*fr-FR*Correcte. "]))
