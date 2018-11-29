@@ -17,7 +17,7 @@ class Edu(object):
     # add SSML tabs to cut up speech or check if this is already being done using <p> tags (Tony?)
     # Expand game sequence to add scratchpad step
     def __init__(self):
-        intro = "*en-GB* Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais vous lire un petit paragrphe.*fr-FR*Fermez less yeux et attendez-moi bien."
+        intro = "*en-GB* Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais vous lire un petit texte.*fr-FR*Fermez less yeux et attendez-moi bien."
         #intro = "*en-GB*Welcome to Clozer.*fr-FR*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
         #client = MongoClient(host="mongodb://kyusong:ianlee1022@ds251362.mlab.com:51362/dictclass")
         # this sets up access to the mongodb database where stories are kept
@@ -50,11 +50,11 @@ class Edu(object):
                 List.append(w)
 
         # set up a hidden version of utterance - this outputs alternate text to speech bubble while tts speaks sys_utter
-        self.hidden = "Right. Now, type one word you remember from the passage."
+        self.hidden = "Bon. Maintenant, marquez un mot que vous rapellez du texte."
         self.original = sess
 
 
-        self.sys_utter = intro + "^w^"+ sess + "^w^*en-GB*Right.*en-GB*Now, type one word you remember from the passage."
+        self.sys_utter = intro + "^w^"+ sess + "^w^*fr-FR*Bon.*fr-FR*Maintenant, marquez un mot que vous rapellez du texte."
         #self.sys_utter = intro + sess["text"] + " Right. Now, type one word from the story."
         self.extraDiv1 = "  ".join(List)
 
@@ -63,7 +63,7 @@ class Edu(object):
         # moves game on after intro
         # check user has only typed one word for guess, reprompt if not, else send to check answer
         if len(text.split(" ")) > 1:
-            self.set_utter("Please type one only word.")
+            self.set_utter("*fr-FR*Seulement un mot.")
         else:
             self.check_answer(text)
         return
