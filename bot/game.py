@@ -17,8 +17,8 @@ class Edu(object):
     # add SSML tabs to cut up speech or check if this is already being done using <p> tags (Tony?)
     # Expand game sequence to add scratchpad step
     def __init__(self):
-        #intro = "*en-GB* Welcome to Clozer. You're going to hear a story. Close your eyes and listen."
-        intro = "*en-GB*Welcome to Clozer.*fr-FR*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
+        intro = "*en-GB* Welcome to Clozer.*fr-FR*Bienvenue a Clozer.*fr-FR*Je vais lire un petit paragrphe.*fr-FR*Fermez less yeux et attendez-moi. You're going to hear a story."
+        #intro = "*en-GB*Welcome to Clozer.*fr-FR*You're going to hear a short passage.*en-GB*So.*en-GB*Close your eyes.*en-GB*Relax and listen carefully."
         #client = MongoClient(host="mongodb://kyusong:ianlee1022@ds251362.mlab.com:51362/dictclass")
         # this sets up access to the mongodb database where stories are kept
         client = MongoClient(host="mongodb://emerg55:emerg55@ds113703.mlab.com:13703/dictstories")
