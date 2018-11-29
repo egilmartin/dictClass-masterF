@@ -38,6 +38,7 @@ class Edu(object):
 
         # set up List, which will hold a _______ for each word and the punctuation
         List = []
+        print(List)
 
         # iterate through words in self.token_words. If it's a word, add a ____ to list, if not, keep (e.g. punctuation)
         for w in self.token_words:
