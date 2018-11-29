@@ -37,7 +37,7 @@ class Edu(object):
         sess = "Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure. Je pourrai en faire davantage plus tard si cela fera ton affaire."
         self.token_words = tokenize.word_tokenize(sess)
 
-        sess1="*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure. Je pourrai en faire davantage plus tard si cela fera ton affaire."
+        sess1="*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure.*fr-FR*Je pourrai en faire davantage plus tard si cela fera ton affaire."
 
         # set up List, which will hold a _______ for each word and the punctuation
         List = []
