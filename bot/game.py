@@ -34,10 +34,10 @@ class Edu(object):
 
         # choose a story at random from database
         sess = "Hi. I hate talking through this web speech thing. I never have a clue what my voice is going to sound like. I really hope you find it understandable. Anyway, I have nothing more to say."
-        sess = "Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure. Je pourrai en faire davantage plus tard si cela fera ton affaire."\
+        sess = "Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure. Je pourrai en faire davantage plus tard si cela fera ton affaire."
         self.token_words = tokenize.word_tokenize(sess)
 
-        sess1="*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure mais je pourrai en faire davantage plus tard si cela fera ton affaire.""
+        sess1="*fr-FR*Je ne peux pas faire beaucoup de phrases sans accents ni apostrophes le matin de bonne heure. Je pourrai en faire davantage plus tard si cela fera ton affaire."
 
         # set up List, which will hold a _______ for each word and the punctuation
         List = []
