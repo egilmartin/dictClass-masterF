@@ -57,7 +57,7 @@ class Edu(object):
         self.original = sess
 
 
-        self.sys_utter = intro + "^w^"+ sess + "^w^*fr-FR*Bon.*fr-FR*Maintenant, marquez un mot que vous rapellez du texte."
+        self.sys_utter = intro + "^w^"+ sess1 + "^w^*fr-FR*Bon.*fr-FR*Maintenant, marquez un mot que vous rapellez du texte."
         #self.sys_utter = intro + sess["text"] + " Right. Now, type one word from the story."
         self.extraDiv1 = "  ".join(List)
 
